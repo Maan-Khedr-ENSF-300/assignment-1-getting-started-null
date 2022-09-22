@@ -15,20 +15,8 @@ def validateOperations(first_operation,second_operation):
         if (second_operation not in operations_list):
             second_operation = input('Error: Please enter a valid operation:')
 
-
-first_value = float(input('Enter the first value:'))
-first_operation = input('Enther the first operator:')
-second_value = float(input('Enter the second value:'))
-second_operation = input('Enter the second operator:')
-third_value = float(input('Enter the third value:'))
-
-validateInputs(first_value,second_value,third_value)
-validateOperations(first_operation,second_operation)
-
-print(f'Enter expression: {first_value} {first_operation} {second_value} {second_operation} {third_value}')
 def addNums(a, b):
     return a + b
-
 
 def divideNums(a, b):
     return a/b
@@ -63,6 +51,21 @@ def performCalculation(a, b, c, operator1, operator2):
     return operations_dict[operators]
 
 
-def main():
 
+
+
+
+def main():
+    first_value = float(input('Enter the first value:'))
+    first_operation = input('Enther the first operator:')
+    second_value = float(input('Enter the second value:'))
+    second_operation = input('Enter the second operator:')
+    third_value = float(input('Enter the third value:'))
+
+    validateInputs(first_value,second_value,third_value)
+    validateOperations(first_operation,second_operation)
+    
+    print(f'Enter expression: {first_value} {first_operation} {second_value} {second_operation} {third_value}')
     print(performCalculation(1, 2, 2, '+', "/"))
+
+
