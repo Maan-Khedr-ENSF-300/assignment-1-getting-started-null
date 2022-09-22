@@ -1,71 +1,118 @@
-def validateInputs(first_value,second_value,third_value):
-    while (first_value != int) and (second_value != int) and (third_value != int):
-        if (first_value != int(first_value)):
-            first_value = int(input('Error: Please enter an integer number:'))
-        if (second_value != int(second_value)):
-            second_value = int(input('Error: Please enter an integer number:'))
-        if (third_value != int(third_value)):
-            third_value = int(input('Error: Please enter an integer number:'))
+import numbers
 
-def validateOperations(first_operation,second_operation):
-    operations_list = ['+','-','*','/']
-    while not (first_operation in operations_list) and (second_operation in operations_list):
-        if (first_operation not in operations_list):
-            first_operation = input('Error: Please enter a valid operation:')
-        if (second_operation not in operations_list):
-            second_operation = input('Error: Please enter a valid operation:')
 
 def addNums(a, b):
-    return a + b
+    sum_nums = a+b
+    return sum_nums
+
 
 def divideNums(a, b):
-    return a/b
+    quotient = a//b
+    return quotient
 
 
 def subtractNums(a, b):
-    return a-b
+    difference = a-b
+    return difference
 
 
 def multiplyNums(a, b):
-    return a*b
+    product = a*b
+    return product
 
 
-def performCalculation(a, b, c, operator1, operator2):
-    operators = operator1 + operator2
+def getNumbersList(equation_list):
+    return [(equation_list)[i] for i in range(len(equation_list)) if i % 2 == 0]
+
+
+def getOperatorsList(equation_list):
+    return [(equation_list)[i] for i in range(len(equation_list)) if i % 2 != 0]
+
+
+def validateNumbers(numbers_list):
+    try:
+        integer_list = [int(x) for x in numbers_list]
+        return integer_list
+    except Exception as e:
+        if "invalid literal for int() with base 10" in str(e):
+            valid_input_list = input(
+                "One or more of your numbers is invalid, enter an equation with 3 integer values and 2 operators separated by spaces:\n").split(" ")
+            valid_numbers_list = getNumbersList(valid_input_list)
+            validateNumbers(valid_numbers_list)
+        else:
+            raise e
+
+    # while (first_value != int) and (second_value != int) and (third_value != int):
+    #     if (first_value != int(first_value)):
+    #         first_value = int(input('Error: Please enter an integer number:'))
+    #     if (second_value != int(second_value)):
+    #         second_value = int(input('Error: Please enter an integer number:'))
+    #     if (third_value != int(third_value)):
+    #         third_value = int(input('Error: Please enter an integer number:'))
+
+
+def validateOperators(operators_list):
+    valid_operators = ['+', '-', '*', '/']
+
+    invalid_inputs = [x for x in operators_list if not (x in valid_operators)]
+
+    if len(invalid_inputs) != 0:
+        valid_input_list = input(
+            "One or more of your operators is invalid, enter an equation with 3 integer values and 2 operators separated by spaces:\n").split(" ")
+        valid_operators_list = getOperatorsList(valid_input_list)
+        validateOperators(valid_operators_list)
+
+    # while not (first_operation in operations_list) and (second_operation in operations_list):
+    #     if (first_operation not in operations_list):
+    #         first_operation = input('Error: Please enter a valid operation:')
+    #     if (second_operation not in operations_list):
+    #         second_operation = input('Error: Please enter a valid operation:')
+
+
+def performCalculation(operators_list, numbers_list):
+    operator_combo = "".join(operators_list)
+
+    a, b, c = numbers_list[0], numbers_list[1], numbers_list[2]
     operations_dict = {
-        "+-": subtractNums(addNums(a, b), c),
-        "-+": addNums(subtractNums(a, b), c),
-        "+/": addNums(a, divideNums(b, c)),
-        "/+": addNums(divideNums(a, b), c),
-        "+*": addNums(a, divideNums(b, c)),
-        "*+": addNums(multiplyNums(a, b), c),
-        "-/": subtractNums(a, divideNums(b, c)),
-        "/-": subtractNums(divideNums(a, b), c),
-        "*-": subtractNums(multiplyNums(a, b), c),
-        "-*": subtractNums(a, multiplyNums),
-        "/*": multiplyNums(divideNums(a, b), c),
-        "*/": divideNums(multiplyNums(a, b), c),
-        "++": addNums(addNums(a, b), c),
-        "--": subtractNums(subtractNums(a, b), c)
+        "+-": subtractNums((addNums(a, b)), c),
+        "-+": addNums((subtractNums(a, b)), c),
+        "+/": addNums(a, (divideNums(b, c))),
+        "/+": addNums((divideNums(a, b)), c),
+        "+*": addNums(a, (divideNums(b, c))),
+        "*+": addNums((multiplyNums(a, b)), c),
+        "-/": subtractNums(a, (divideNums(b, c))),
+        "/-": subtractNums((divideNums(a, b)), c),
+        "*-": subtractNums((multiplyNums(a, b)), c),
+        "-*": subtractNums(a, (multiplyNums(b, c))),
+        "/*": multiplyNums((divideNums(a, b)), c),
+        "*/": divideNums((multiplyNums(a, b)), c),
+        "++": addNums((addNums(a, b)), c),
+        "--": subtractNums((subtractNums(a, b)), c),
+        "**": multiplyNums((multiplyNums(a, b)), c),
+        "//": divideNums((divideNums(a, b)), c),
     }
-    return operations_dict[operators]
-
-
-
-
+    return operations_dict[operator_combo]
 
 
 def main():
-    first_value = float(input('Enter the first value:'))
-    first_operation = input('Enther the first operator:')
-    second_value = float(input('Enter the second value:'))
-    second_operation = input('Enter the second operator:')
-    third_value = float(input('Enter the third value:'))
 
-    validateInputs(first_value,second_value,third_value)
-    validateOperations(first_operation,second_operation)
-    
-    print(f'Enter expression: {first_value} {first_operation} {second_value} {second_operation} {third_value}')
-    print(performCalculation(1, 2, 2, '+', "/"))
+    user_input = (input(
+        "Enter an equation with 3 integer values and 2 operators separated by spaces:\n"))
+    input_list = user_input.split(" ")
+
+    numbers_list = getNumbersList(input_list)
+    numbers_list = validateNumbers(numbers_list)
+
+    operators_list = getOperatorsList(input_list)
+    validateOperators(operators_list)
+
+    answer = performCalculation(operators_list, numbers_list)
+
+    print(f"The answer to {user_input}\n= {answer}")
+
+    # validateNumbers(numbers_list)
+    # validateOperators(operators_list)
 
 
+if __name__ == "__main__":
+    main()
