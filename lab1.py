@@ -1,6 +1,3 @@
-import numbers
-
-
 def addNums(a, b):
     sum_nums = a+b
     return sum_nums
@@ -42,14 +39,6 @@ def validateNumbers(numbers_list):
         else:
             raise e
 
-    # while (first_value != int) and (second_value != int) and (third_value != int):
-    #     if (first_value != int(first_value)):
-    #         first_value = int(input('Error: Please enter an integer number:'))
-    #     if (second_value != int(second_value)):
-    #         second_value = int(input('Error: Please enter an integer number:'))
-    #     if (third_value != int(third_value)):
-    #         third_value = int(input('Error: Please enter an integer number:'))
-
 
 def validateOperators(operators_list):
     valid_operators = ['+', '-', '*', '/']
@@ -61,12 +50,6 @@ def validateOperators(operators_list):
             "One or more of your operators is invalid, enter an equation with 3 integer values and 2 operators separated by spaces:\n").split(" ")
         valid_operators_list = getOperatorsList(valid_input_list)
         validateOperators(valid_operators_list)
-
-    # while not (first_operation in operations_list) and (second_operation in operations_list):
-    #     if (first_operation not in operations_list):
-    #         first_operation = input('Error: Please enter a valid operation:')
-    #     if (second_operation not in operations_list):
-    #         second_operation = input('Error: Please enter a valid operation:')
 
 
 def performCalculation(operators_list, numbers_list):
@@ -107,11 +90,7 @@ def main():
     validateOperators(operators_list)
 
     answer = performCalculation(operators_list, numbers_list)
-
     print(f"The answer to {user_input}\n= {answer}")
-
-    # validateNumbers(numbers_list)
-    # validateOperators(operators_list)
 
 
 if __name__ == "__main__":
