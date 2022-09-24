@@ -1,32 +1,32 @@
-def addNums(a, b):
+def addNums(a: int, b: int) -> int:
     sum_nums = a+b
     return sum_nums
 
 
-def divideNums(a, b):
+def divideNums(a: int, b: int) -> int:
     quotient = a//b
     return quotient
 
 
-def subtractNums(a, b):
+def subtractNums(a: int, b: int) -> int:
     difference = a-b
     return difference
 
 
-def multiplyNums(a, b):
+def multiplyNums(a: int, b: int) -> int:
     product = a*b
     return product
 
 
-def getNumbersList(equation_list):
+def getNumbersList(equation_list: list) -> list:
     return [(equation_list)[i] for i in range(len(equation_list)) if i % 2 == 0]
 
 
-def getOperatorsList(equation_list):
+def getOperatorsList(equation_list: list) -> list:
     return [(equation_list)[i] for i in range(len(equation_list)) if i % 2 != 0]
 
 
-def validateNumbers(numbers_list):
+def validateNumbers(numbers_list: list) -> list:
     try:
         integer_list = [int(x) for x in numbers_list]
         return integer_list
@@ -40,7 +40,7 @@ def validateNumbers(numbers_list):
             raise e
 
 
-def validateOperators(operators_list):
+def validateOperators(operators_list: list) -> None:
     valid_operators = ['+', '-', '*', '/']
 
     invalid_inputs = [x for x in operators_list if not (x in valid_operators)]
@@ -52,7 +52,7 @@ def validateOperators(operators_list):
         validateOperators(valid_operators_list)
 
 
-def performCalculation(operators_list, numbers_list):
+def performCalculation(operators_list: list, numbers_list: list) -> int:
     operator_combo = "".join(operators_list)
 
     a, b, c = numbers_list[0], numbers_list[1], numbers_list[2]
