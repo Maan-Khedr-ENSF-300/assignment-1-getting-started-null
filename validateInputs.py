@@ -1,10 +1,12 @@
 # receives a list of the full equation and parses it into a list of the numerical values
 def getNumbersList(equation_list: list) -> list:
-    return [(equation_list)[i] for i in range(len(equation_list)) if i % 2 == 0]
+    list_of_numbers = [(equation_list)[i] for i in range(len(equation_list)) if i % 2 == 0]
+    return list_of_numbers
 
 # receives a list of the full equation and parses it into a list of the operators
 def getOperatorsList(equation_list: list) -> list:
-    return [(equation_list)[i] for i in range(len(equation_list)) if i % 2 != 0]
+    list_of_operators = [(equation_list)[i] for i in range(len(equation_list)) if i % 2 != 0]
+    return list_of_operators
 
 # receives a list of numerical string values and attempts to return it as a list of integers. Function will be called recursively until valid input is received.
 def validateNumbers(numbers_list: list) -> list:
@@ -33,11 +35,3 @@ def validateOperators(operators_list: list) -> None:
             "One or more of your operators is invalid, enter an equation with 3 integer values and 2 operators separated by spaces:\n").split(" ")
         valid_operators_list = getOperatorsList(valid_input_list)
         validateOperators(valid_operators_list)
-
-def displayUserExpression(list_of_numbers, list_of_operators, final_answer):
-    final_output = ""
-    for i in range(len(list_of_numbers)):
-        final_output += f"{list_of_numbers[i]} {list_of_operators[i]} "
-
-    final_output += f"\n{final_answer}"
-    print(final_answer)
