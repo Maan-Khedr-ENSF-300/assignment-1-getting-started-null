@@ -1,7 +1,16 @@
 from calculateNums import *
 from validateInputs import *
+from tests import *
 
 def main():
+    unit_test_flag = True
+    integration_test_flag = True
+
+    if unit_test_flag == True:
+        unitTests()
+    if integration_test_flag == True:
+        integrationTests()
+
     # receives user input and creates list from it
     user_input = (input(
         "Enter an equation with 3 integer values and 2 operators separated by spaces:\n"))
