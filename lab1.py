@@ -3,8 +3,8 @@ from validateInputs import *
 from tests import *
 
 def main():
+    # set the flag to True if you want tests to be run
     unit_test_flag, integration_test_flag = True, False
-
     if unit_test_flag == True:
         unitTests()
     if integration_test_flag == True:
