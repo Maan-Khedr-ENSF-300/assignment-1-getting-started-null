@@ -3,8 +3,7 @@ from validateInputs import *
 from tests import *
 
 def main():
-    unit_test_flag = True
-    integration_test_flag = True
+    unit_test_flag, integration_test_flag = True, False
 
     if unit_test_flag == True:
         unitTests()

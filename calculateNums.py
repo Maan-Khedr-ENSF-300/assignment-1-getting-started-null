@@ -5,7 +5,7 @@ def myAdd(a: int, b: int) -> int:
 
 # receives 2 integers and returns the quotient as an integer
 def myDivide(a: int, b: int) -> int:
-    quotient = a//b
+    quotient = int(a/b)
     return quotient
 
 # receives 2 integers and returns the difference as an integer
