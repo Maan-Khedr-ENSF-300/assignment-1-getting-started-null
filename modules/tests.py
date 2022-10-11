@@ -82,6 +82,57 @@ def unitTests() -> None:
     assert validateOperators(["*", "-"]) == True
 
 
-def integrationTests():
+def integrationTests() -> None:
 
-    return None
+    """
+    These are the integration tests. Since no testing framework was used,
+    we could not simply do the tests by testing the main function due to 
+    the input buffer so these function calls follow the logic of the program.
+    """
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "+", "3", "+", "2"]))),
+    (getOperatorsList(["4", "+", "3", "+", "2", "="])), performCalculation(["+", "+"], [4, 3, 2])) == "4 + 3 + 2 = \n9"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["8", "-", "3", "-", "2"]))),
+    (getOperatorsList(["8", "-", "3", "-", "2", "="])), performCalculation(["-", "-"], [8, 3, 2])) == "8 - 3 - 2 = \n3"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "*", "3", "*", "2"]))),
+    (getOperatorsList(["4", "*", "3", "*", "2", "="])), performCalculation(["*", "*"], [4, 3, 2])) == "4 * 3 * 2 = \n24"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "/", "1", "/", "2"]))),
+    (getOperatorsList(["4", "/", "1", "/", "2", "="])), performCalculation(["/", "/"], [4, 1, 2])) == "4 / 1 / 2 = \n2"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "+", "3", "-", "2"]))),
+    (getOperatorsList(["4", "+", "3", "-", "2", "="])), performCalculation(["+", "-"], [4, 3, 2])) == "4 + 3 - 2 = \n5"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "-", "3", "+", "2"]))),
+    (getOperatorsList(["4", "-", "3", "+", "2", "="])), performCalculation(["-", "+"], [4, 3, 2])) == "4 - 3 + 2 = \n3"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "+", "3", "*", "2"]))),
+    (getOperatorsList(["4", "+", "3", "*", "2", "="])), performCalculation(["+", "*"], [4, 3, 2])) == "4 + 3 * 2 = \n14"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "*", "3", "+", "2"]))),
+    (getOperatorsList(["4", "*", "3", "+", "2", "="])), performCalculation(["*", "+"], [4, 3, 2])) == "4 * 3 + 2 = \n14"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "*", "3", "/", "2"]))),
+    (getOperatorsList(["4", "*", "3", "/", "2", "="])), performCalculation(["*", "/"], [4, 3, 2])) == "4 * 3 / 2 = \n6"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "/", "1", "*", "2"]))),
+    (getOperatorsList(["4", "/", "1", "*", "2", "="])), performCalculation(["/", "*"], [4, 1, 2])) == "4 / 1 * 2 = \n8"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "/", "1", "+", "2"]))),
+    (getOperatorsList(["4", "/", "1", "+", "2", "="])), performCalculation(["/", "+"], [4, 1, 2])) == "4 / 1 + 2 = \n6"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "+", "3", "/", "1"]))),
+    (getOperatorsList(["4", "+", "3", "/", "1", "="])), performCalculation(["+", "/"], [4, 3, 1])) == "4 + 3 / 1 = \n7"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "/", "2", "-", "1"]))),
+    (getOperatorsList(["4", "/", "2", "-", "1", "="])), performCalculation(["/", "-"], [4, 2, 1])) == "4 / 2 - 1 = \n1"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["11", "-", "3", "/", "2"]))),
+    (getOperatorsList(["11", "-", "3", "/", "2", "="])), performCalculation(["-", "/"], [11, 3, 2])) == "11 - 3 / 2 = \n4"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "-", "3", "*", "2"]))),
+    (getOperatorsList(["4", "-", "3", "*", "2", "="])), performCalculation(["-", "*"], [4, 3, 2])) == "4 - 3 * 2 = \n2"
+
+    assert displayUserExpression((validateNumbers(getNumbersList(["4", "*", "3", "-", "2"]))),
+    (getOperatorsList(["4", "*", "3", "-", "2", "="])), performCalculation(["*", "-"], [4, 3, 2])) == "4 * 3 - 2 = \n10"

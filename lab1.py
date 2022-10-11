@@ -7,7 +7,7 @@ from tests import *
 
 def main():
     # set the flag to True if you want tests to be run
-    unit_test_flag, integration_test_flag = True, False
+    unit_test_flag, integration_test_flag = True, True
     if unit_test_flag == True:
         unitTests()
     if integration_test_flag == True:
@@ -31,7 +31,7 @@ def main():
 
     # append "=" to end of operators list to meet requirements and calls the display function
     operators_list.append("=")
-    displayUserExpression(numbers_list, operators_list, answer)
+    print(displayUserExpression(numbers_list, operators_list, answer))
 
 if __name__ == "__main__":
     main()
