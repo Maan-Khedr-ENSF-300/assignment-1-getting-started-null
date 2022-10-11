@@ -1,20 +1,20 @@
 # receives 2 integers and returns the sum as an integer
-def addNums(a: int, b: int) -> int:
+def myAdd(a: int, b: int) -> int:
     sum_nums = a+b
     return sum_nums
 
 # receives 2 integers and returns the quotient as an integer
-def divideNums(a: int, b: int) -> int:
-    quotient = a//b
+def myDivide(a: int, b: int) -> int:
+    quotient = int(a/b)
     return quotient
 
 # receives 2 integers and returns the difference as an integer
-def subtractNums(a: int, b: int) -> int:
+def mySubtract(a: int, b: int) -> int:
     difference = a-b
     return difference
 
 # receives 2 integers and returns the product as an integer
-def multiplyNums(a: int, b: int) -> int:
+def myMultiply(a: int, b: int) -> int:
     product = a*b
     return product
 
@@ -26,22 +26,22 @@ def performCalculation(operators_list: list, numbers_list: list) -> int:
 
     # created dictionary for the combinations of operators instead of 16 "if/elif/else" statements
     operations_dict = {
-        "+-": subtractNums((addNums(a, b)), c),
-        "-+": addNums((subtractNums(a, b)), c),
-        "+/": addNums(a, (divideNums(b, c))),
-        "/+": addNums((divideNums(a, b)), c),
-        "+*": addNums(a, (divideNums(b, c))),
-        "*+": addNums((multiplyNums(a, b)), c),
-        "-/": subtractNums(a, (divideNums(b, c))),
-        "/-": subtractNums((divideNums(a, b)), c),
-        "*-": subtractNums((multiplyNums(a, b)), c),
-        "-*": subtractNums(a, (multiplyNums(b, c))),
-        "/*": multiplyNums((divideNums(a, b)), c),
-        "*/": divideNums((multiplyNums(a, b)), c),
-        "++": addNums((addNums(a, b)), c),
-        "--": subtractNums((subtractNums(a, b)), c),
-        "**": multiplyNums((multiplyNums(a, b)), c),
-        "//": divideNums((divideNums(a, b)), c),
+        "+-": mySubtract((myAdd(a, b)), c),
+        "-+": myAdd((mySubtract(a, b)), c),
+        "+/": myAdd(a, (myDivide(b, c))),
+        "/+": myAdd((myDivide(a, b)), c),
+        "+*": myAdd(a, (myMultiply(b, c))),
+        "*+": myAdd((myMultiply(a, b)), c),
+        "-/": mySubtract(a, (myDivide(b, c))),
+        "/-": mySubtract((myDivide(a, b)), c),
+        "*-": mySubtract((myMultiply(a, b)), c),
+        "-*": mySubtract(a, (myMultiply(b, c))),
+        "/*": myMultiply((myDivide(a, b)), c),
+        "*/": myDivide((myMultiply(a, b)), c),
+        "++": myAdd((myAdd(a, b)), c),
+        "--": mySubtract((mySubtract(a, b)), c),
+        "**": myMultiply((myMultiply(a, b)), c),
+        "//": myDivide((myDivide(a, b)), c),
     }
     return operations_dict[operator_combo]
 

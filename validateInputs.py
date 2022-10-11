@@ -23,8 +23,8 @@ def validateNumbers(numbers_list: list) -> list:
         else:
             raise e
 
-# receives a list of operator string values and will call the function recursively until all operators are valid
-def validateOperators(operators_list: list) -> None:
+# receives a list of operator string values and will call the function recursively until all operators are valid. Returns True if all operators are valid.
+def validateOperators(operators_list: list) -> True:
     valid_operators = ['+', '-', '*', '/']
 
     invalid_inputs = [x for x in operators_list if not (x in valid_operators)]
@@ -35,3 +35,5 @@ def validateOperators(operators_list: list) -> None:
             "One or more of your operators is invalid, enter an equation with 3 integer values and 2 operators separated by spaces:\n").split(" ")
         valid_operators_list = getOperatorsList(valid_input_list)
         validateOperators(valid_operators_list)
+
+    return True
