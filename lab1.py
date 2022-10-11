@@ -1,3 +1,6 @@
+import sys
+sys.path.append('./modules')
+
 from calculateNums import *
 from validateInputs import *
 from tests import *
