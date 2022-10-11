@@ -45,12 +45,13 @@ def performCalculation(operators_list: list, numbers_list: list) -> int:
     }
     return operations_dict[operator_combo]
 
-# Takes 2 lists, loops though them and concatenates the expression together and prints output to terminal
-def displayUserExpression(list_of_numbers: list, list_of_operators: list, final_answer: list) -> None:
+# Takes 2 lists, loops though them and concatenates the expression together and returns the output in string format
+def displayUserExpression(list_of_numbers: list, list_of_operators: list, final_answer: list) -> str:
     final_output = ""
 
     for i in range(len(list_of_numbers)):
         final_output += f"{list_of_numbers[i]} {list_of_operators[i]} "
 
     final_output += f"\n{final_answer}"
-    print(final_output)
+    
+    return final_output
